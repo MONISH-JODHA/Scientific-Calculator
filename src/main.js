@@ -5,7 +5,12 @@ document.addEventListener("DOMContentLoaded", function(){
     let currentvalue="";
     function evaluate(){
         const newvalue=currentvalue.replace("×","*")
-            .replace("÷","/").replace("%","*0.01");
+            .replace("÷","/").replace("%","*0.01")
+            .replace("sin","Math.sin")
+            .replace("cos","Math.cos")
+            .replace("π","Math.PI")
+            .replace("ln","Math.log")
+            .replace("log","Math.log10()");
         currentvalue=newvalue;
         const result=eval(currentvalue);
         currentvalue=result.toString();
@@ -28,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function(){
             else if(valuee=="="){
                 evaluate();
             }
+            
             else{
                 currentvalue+=valuee;
                 display.value=currentvalue;
