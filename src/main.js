@@ -10,7 +10,10 @@ document.addEventListener("DOMContentLoaded", function(){
             .replace("cos","Math.cos")
             .replace("π","Math.PI")
             .replace("ln","Math.log")
-            .replace("log","Math.log10()");
+            .replace("log","Math.log10()")
+            .replace("e","Math.E")
+            .replace("tan","Math.tan")
+            .replace("√","Math.sqrt");
         currentvalue=newvalue;
         const result=eval(currentvalue);
         currentvalue=result.toString();
@@ -26,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function(){
             const valuee=button.innerText;
 
             
+           try{
             if (valuee== "AC"){
                 currentvalue="";
                 display.value=currentvalue;
@@ -37,7 +41,12 @@ document.addEventListener("DOMContentLoaded", function(){
             else{
                 currentvalue+=valuee;
                 display.value=currentvalue;
-            }    
+            }   
+           } catch(error){
+            console.error(error);
+            currentvalue="--E R R O R--";
+            display.value=currentvalue;
+           }
             
             
          })
